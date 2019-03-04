@@ -30,6 +30,10 @@ namespace CustomerMaintenanceClasses
             }
             set
             {
+                if (firstName.Length > 30)
+                {
+                    throw new ArgumentException("firstName");
+                }
                 firstName = value;
             }
         }
