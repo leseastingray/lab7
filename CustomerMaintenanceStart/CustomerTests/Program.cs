@@ -57,6 +57,7 @@ namespace CustomerTests
             c1.Email = "jlast@dog.net";
             Console.WriteLine("Expecting Jeff Last, jlast@dog.net " + c1.GetDisplayText());
             Console.WriteLine();
+
         }
 
         static void TestCustomerMethods()
@@ -66,6 +67,25 @@ namespace CustomerTests
             Console.WriteLine("Testing GetDisplayText");
             Console.WriteLine("Expecting Jake this is a test customer, jkam@dog.net " + c1.GetDisplayText());
             Console.WriteLine();
+        }
+
+        static void TestSetterExceptions()
+        {
+            Customer c1 = new Customer("Jake", "this is a test customer", "jkam@dog.net");
+
+            try
+            {
+                Console.WriteLine("Testing setters");
+                c1.FirstName = "Jeff";
+                c1.LastName = "Last";
+                c1.Email = "jlastbobkeithandersonifyoucanreadthissayhitoyourpuppydog@dog.net";
+                Console.WriteLine("Expecting Jeff Last, jlast@dog.net " + c1.GetDisplayText());
+                Console.WriteLine();
+            }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("Caught email length exception.")
+            }
         }
 
         static void TestCustomerAll()
