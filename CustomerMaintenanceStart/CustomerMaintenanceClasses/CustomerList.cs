@@ -12,7 +12,7 @@ namespace CustomerMaintenanceClasses
 
         public CustomerList()
         {
-            customers = new List<Customer>;
+            customers = new List<Customer>();
         }
 
         public int Count
@@ -84,13 +84,13 @@ namespace CustomerMaintenanceClasses
         }
 
         // Look at this!!!! Email is a good unique key for customers
-        public Customer this[string code]
+        public Customer this[string email]
         {
             get
             {
                 foreach (Customer c in customers)
                 {
-                    if (c.Code == code)
+                    if (c.Email == email)
                         return c;
                 }
                 return null;

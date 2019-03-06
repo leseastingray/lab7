@@ -84,7 +84,7 @@ namespace CustomerTests
             }
             catch (ArgumentException)
             {
-                Console.WriteLine("Caught email length exception.")
+                Console.WriteLine("Caught email length exception.");
             }
         }
 
