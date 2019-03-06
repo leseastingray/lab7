@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2041
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerMaintenance", "CustomerMaintenance\CustomerMaintenance.csproj", "{A3F58F4F-9DF9-470C-84C9-8092B938F78D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerMaintenanceClasses", "CustomerMaintenanceClasses\CustomerMaintenanceClasses.csproj", "{434543E0-1055-40D3-B3BD-AED7372A5B71}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerTests", "CustomerTests\CustomerTests.csproj", "{6E38FACA-9FC5-4838-B385-D19ED8F2558F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerListTests", "CustomerListTests\CustomerListTests.csproj", "{499C8AE9-5575-4430-BE16-0BEDB281B6C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,8 +29,15 @@ Global
 		{6E38FACA-9FC5-4838-B385-D19ED8F2558F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E38FACA-9FC5-4838-B385-D19ED8F2558F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E38FACA-9FC5-4838-B385-D19ED8F2558F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{499C8AE9-5575-4430-BE16-0BEDB281B6C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{499C8AE9-5575-4430-BE16-0BEDB281B6C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{499C8AE9-5575-4430-BE16-0BEDB281B6C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{499C8AE9-5575-4430-BE16-0BEDB281B6C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BF1B0439-93D6-4DF0-9E59-8433D3FA921D}
 	EndGlobalSection
 EndGlobal
