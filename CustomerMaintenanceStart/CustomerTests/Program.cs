@@ -88,6 +88,45 @@ namespace CustomerTests
             }
         }
 
+        // WholesaleCustomer Class Tests - TODO!
+        static void TestWholesaleCustomer()
+        {
+            Console.WriteLine("Testing Wholesale Class");
+
+            WholesaleCustomer whcust1 = "";
+            WholesaleCustomer whcust2 = "";
+
+
+
+
+
+
+            Console.WriteLine("Polymorphism tested with GetDisplayText");
+            Console.WriteLine("GetDisplayText from WholesaleCustomer Class" + whcust1.GetDisplayText());
+            Console.WriteLine("GetDisplayText from RetailCustomer Class" + );
+            Console.WriteLine("GetDisplayText from Customer Class");
+        }
+
+        // RetailCustomer Class Tests - TODO!
+        static void TestRetailCustomer()
+        {
+
+        }
+
+        // CustomerList2 Tests - TODO!!!
+        static void TestCustomerList2()
+        {
+            Console.WriteLine("Testing Wholesale and Retail in same list");
+            CustomerList2 cList = new CustomerList2();
+
+            //foreach loop to get all first names in both lists, then combine
+            foreach (Customer c in cList)
+            {
+                
+            }
+        }
+
+        // Add new tests
         static void TestCustomerAll()
         {
             TestCustomerConstructors();

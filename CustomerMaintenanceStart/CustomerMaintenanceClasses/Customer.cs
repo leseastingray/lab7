@@ -62,9 +62,14 @@ namespace CustomerMaintenanceClasses
             }
         }
 
-        public string GetDisplayText()
+        public virtual string GetDisplayText()
         {
             return firstName + " " + lastName + ", " + email;
+        }
+
+        public override string ToString()
+        {
+            return GetDisplayText();
         }
     }
 }
