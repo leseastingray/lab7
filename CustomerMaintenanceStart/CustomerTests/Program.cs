@@ -12,12 +12,19 @@ namespace CustomerTests
         static void Main(string[] args)
         {
             // TestCustomerMembers()
-            TestCustomerConstructors();
-            TestCustomerPropertyGetters();
-            TestCustomerPropertySetters();
-            TestCustomerMethods();
+            //TestCustomerConstructors();
+            //TestCustomerPropertyGetters();
+            //TestCustomerPropertySetters();
+            //TestCustomerMethods();
 
-            // TestCustomerAll()
+            // WholesaleCustomer Derived Class Test
+            TestWholesaleCustomer();
+
+            // RetailCustomer Derived Class Test
+            TestRetailCustomer();
+
+            // Test Polymorphism
+            TestCustomerPolymorphism();
 
             Console.WriteLine();
             Console.ReadLine();
@@ -88,29 +95,48 @@ namespace CustomerTests
             }
         }
 
-        // WholesaleCustomer Class Tests - TODO!
+        // WholesaleCustomer Class Test
         static void TestWholesaleCustomer()
         {
             Console.WriteLine("Testing Wholesale Class");
 
-            WholesaleCustomer whcust1 = "";
-            WholesaleCustomer whcust2 = "";
+            WholesaleCustomer wholecust1 = new WholesaleCustomer("Brandon", "Bobs", "bbobs@bobsmotors.com", "Bobs Motors");
+            WholesaleCustomer wholecust2 = new WholesaleCustomer("Mary", "Scampi", "maryscampi@scampishrimp.com", "Scampi Shrimp");
 
-
-
-
-
-
-            Console.WriteLine("Polymorphism tested with GetDisplayText");
-            Console.WriteLine("GetDisplayText from WholesaleCustomer Class" + whcust1.GetDisplayText());
-            Console.WriteLine("GetDisplayText from RetailCustomer Class" + );
-            Console.WriteLine("GetDisplayText from Customer Class");
+            Console.WriteLine("Expecting Brandon Bobs, bbobs@bobsmotors (Bobs Motors) \n" + wholecust1.GetDisplayText());
+            Console.WriteLine("Expecting Mary Scampi, maryscampi@scampishrimp.com (Scampi Shrimp) \n" + wholecust2.GetDisplayText());
+            Console.WriteLine();
         }
 
-        // RetailCustomer Class Tests - TODO!
+        // RetailCustomer Class Test
         static void TestRetailCustomer()
         {
+            Console.WriteLine("Testing Retail Class");
 
+            RetailCustomer retailcust1 = new RetailCustomer("Aaron", "Baker", "abaker@dog.net", "(555) 555-5555");
+            RetailCustomer retailcust2 = new RetailCustomer("Cathi", "Davis", "cdavis@dog.net", "(555) 777-7777");
+
+            Console.WriteLine("Expecting Aaron Baker, abaker@dog.net ph: (555) 555-5555 \n" + retailcust1.GetDisplayText());
+            Console.WriteLine("Expecting Cathi Davis, cdavis@dog.net ph: (555) 777-7777 \n" + retailcust2.GetDisplayText());
+            Console.WriteLine();
+        }
+
+        static void TestCustomerPolymorphism()
+        {
+            Console.WriteLine("Polymorphism tested with GetDisplayText");
+            Customer cust1 = new Customer("Jake", "Last", "jlast@dog.net");
+            WholesaleCustomer wholecust1 = new WholesaleCustomer("Brandon", "Bobs", "bbobs@bobsmotors.com", "Bobs Motors");
+            RetailCustomer retailcust1 = new RetailCustomer("Aaron", "Baker", "abaker@dog.net", "(555) 555-5555");
+
+            Console.WriteLine("GetDisplay Text from Customer Class");
+            Console.WriteLine("Expecting Jake Last, jlast@dog.net \n" + cust1.GetDisplayText());
+
+            Console.WriteLine("GetDisplayText from WholesaleCustomer Class");
+            Console.WriteLine("Expecting Expecting Brandon Bobs, bbobs@bobsmotors (Bobs Motors) \n" + wholecust1.GetDisplayText());
+
+            Console.WriteLine("GetDisplayText from RetailCustomer Class");
+            Console.WriteLine("Expecting Aaron Baker, abaker@dog.net ph: (555) 555-5555 \n" + retailcust1.GetDisplayText());
+            Console.WriteLine();
         }
 
         // CustomerList2 Tests - TODO!!!

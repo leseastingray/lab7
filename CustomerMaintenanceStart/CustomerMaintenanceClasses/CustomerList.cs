@@ -15,13 +15,7 @@ namespace CustomerMaintenanceClasses
             customers = new List<Customer>();
         }
 
-        public int Count
-        {
-            get
-            {
-                return customers.Count;
-            }
-        }
+        public int Count => customers.Count;
 
         public void Fill()
         {
@@ -57,7 +51,7 @@ namespace CustomerMaintenanceClasses
             string output = "";
             foreach (Customer c in customers)
             {
-                output += c.ToString() + "\n";
+                output += c.GetDisplayText() + "\n";
             }
             return output;
         }
@@ -83,7 +77,7 @@ namespace CustomerMaintenanceClasses
             }
         }
 
-        // Look at this!!!! Email is a good unique key for customers
+        // Using Customer email for unique key
         public Customer this[string email]
         {
             get
@@ -108,7 +102,5 @@ namespace CustomerMaintenanceClasses
             clist.Remove(c);
             return clist;
         }
-
-
     }
 }

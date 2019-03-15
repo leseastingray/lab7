@@ -7,6 +7,8 @@ namespace CustomerMaintenanceClasses
 {
     public class CustomerList2 : List<Customer>
     {
+        private List<Customer> customers;
+
         // changed Fill method
         public void Fill()
         {
@@ -72,8 +74,8 @@ namespace CustomerMaintenanceClasses
             }
         }
 
-        // Look at stuff below this, watch 3/11 class video
-        // Look at this!!!! Email is a good unique key for customers
+        // Look at stuff below this, watch 3/11 class video, need to fix errors in operators
+
         public Customer this[string email]
         {
             get
@@ -87,13 +89,14 @@ namespace CustomerMaintenanceClasses
             }
         }
 
-        public static CustomerList operator + (CustomerList clist, Customer c)
+
+        public static CustomerList2 operator + (CustomerList2 clist, Customer c)
         {
             clist.Add(c);
             return clist;
         }
 
-        public static CustomerList operator - (CustomerList clist, Customer c)
+        public static CustomerList2 operator - (CustomerList2 clist, Customer c)
         {
             clist.Remove(c);
             return clist;
