@@ -26,6 +26,13 @@ namespace CustomerTests
             // Test Polymorphism
             TestCustomerPolymorphism();
 
+            // CustomerList2 Tests
+            TestCustomerList2Constructor();
+            TestCustomerList2Add();
+            TestCustomerList2Remove();
+            TestCustomerList2Indexers();
+            TestCustomerList2Combo();
+
             Console.WriteLine();
             Console.ReadLine();
         }
@@ -138,21 +145,132 @@ namespace CustomerTests
             Console.WriteLine("Expecting Aaron Baker, abaker@dog.net ph: (555) 555-5555 \n" + retailcust1.GetDisplayText());
             Console.WriteLine();
         }
-
-        // CustomerList2 Tests - TODO!!!
-        static void TestCustomerList2()
+        // CustomerList2 Tests
+        static void TestCustomerList2Constructor()
         {
-            Console.WriteLine("Testing Wholesale and Retail in same list");
-            CustomerList2 cList = new CustomerList2();
+            CustomerList cList = new CustomerList();
 
-            //foreach loop to get all first names in both lists, then combine
-            foreach (Customer c in cList)
-            {
-                
-            }
+            Console.WriteLine("Testing constructor");
+            Console.WriteLine("Default constructor. Expecting count of 0 " + cList.Count);
+            Console.WriteLine("Default constructor. Expecting empty string" + cList);
+            Console.WriteLine();
         }
 
-        // Add new tests
+        static void TestCustomerList2Fill()
+        {
+            CustomerList2 cList2 = new CustomerList2();
+            cList2.Fill();
+
+            Console.WriteLine("Testing Fill");
+            Console.WriteLine("Expecting count of 5 " + cList2.Count);
+            Console.WriteLine("Expecting list of 5 customers: \n" + cList2);
+            Console.WriteLine();
+        }
+
+        static void TestCustomerList2Add()
+        {
+            CustomerList2 cList2 = new CustomerList2();
+            Customer c1 = new Customer("John", "Smith", "jsmith@virginia.gov");
+            Customer c3 = new Customer("Jake", "Andrews", "jandrews@dog.net");
+
+            Console.WriteLine("Testing Add");
+            cList2.Add(c1);
+            Console.WriteLine("Add that takes a customer parameter");
+            Console.WriteLine("Expecting count of 1 " + cList2.Count);
+            Console.WriteLine("Expecting list of 1 customer: \n" + cList2);
+
+            cList2.Add("Elsa", "Jacobs", "secondtestcustomer@cs.net");
+            Console.WriteLine("Add that takes individual customer attributes and constructs customer");
+            Console.WriteLine("Expecting count of 2 " + cList2.Count);
+            Console.WriteLine("Expecting list of 2 customers: \n" + cList2);
+
+            cList2 += c3;
+            Console.WriteLine("+ operator");
+            Console.WriteLine("Expecting count of 3 " + cList2.Count);
+            Console.WriteLine("Expecting list of 3 customers:\n" + cList2);
+            Console.WriteLine();
+        }
+
+        static void TestCustomerList2Remove()
+        {
+            CustomerList2 cList2 = new CustomerList2();
+            Customer c1 = new Customer("John", "Smith", "jsmith@virginia.gov");
+            Customer c3 = new Customer("Jake", "Andrews", "jandrews@dog.net");
+
+            cList2.Add(c1);
+            cList2.Add("Elsa", "Jacobs", "secondtestcustomer@cs.net");
+            cList2 += c3;
+
+            Console.WriteLine("Testing Remove");
+            Console.WriteLine("Remove");
+            cList2.Remove(c1);
+            Console.WriteLine("Expecting count of 2 " + cList2.Count);
+            Console.WriteLine("Expecting list of 2 customers: Removed John: \n" + cList2);
+
+            cList2 -= c3;
+            Console.WriteLine("- operator");
+            Console.WriteLine("Expecting count of 1 " + cList2.Count);
+            Console.WriteLine("Expecting list of 1 customer. Removed Jake: \n" + cList2);
+            Console.WriteLine();
+        }
+
+        static void TestCustomerList2Indexers()
+        {
+            CustomerList2 cList2 = new CustomerList2();
+            Customer c1 = new Customer("John", "Smith", "jsmith@virginia.gov");
+            Customer c3 = new Customer("Jake", "Andrews", "jandrews@dog.net");
+
+            cList2.Add(c1);
+            cList2.Add("Elsa", "Jacobs", "secondtestcustomer@cs.net");
+            cList2 += c3;
+
+            Console.WriteLine("Testing indexer");
+            Console.WriteLine("Get product with index 0");
+            Customer c4 = cList2[0];
+            Console.WriteLine("Expecting John. " + c4);
+            Console.WriteLine("Should not change list. Expecting count of 3 " + cList2.Count);
+            Console.WriteLine("Expecting list of 3 customers.  John is the first element in list:\n" + cList2);
+        }
+
+        // CustomerList2 Combo Tests
+        static void TestCustomerList2Combo()
+        {
+            Console.WriteLine("Testing Wholesale and Retail in same list");
+            CustomerList2 cList2 = new CustomerList2();
+
+            // Add wholesale customers to the list
+            WholesaleCustomer wholecust1 = new WholesaleCustomer("Brandon", "Bobs", "bbobs@bobsmotors.com", "Bobs Motors");
+            cList2.Add(wholecust1);
+            WholesaleCustomer wholecust2 = new WholesaleCustomer("Mary", "Scampi", "maryscampi@scampishrimp.com", "Scampi Shrimp");
+            cList2.Add(wholecust2);
+
+            // Add retail customers to the list w/overloaded operators
+            RetailCustomer retailcust1 = new RetailCustomer("Aaron", "Baker", "abaker@dog.net", "(555) 555-5555");
+            cList2 += retailcust1;
+            RetailCustomer retailcust2 = new RetailCustomer("Cathi", "Davis", "cdavis@dog.net", "(555) 777-7777");
+            cList2 += retailcust2;
+
+            Console.WriteLine("Expecting list of 4 customers, 1st 2 wholesale, next 2 retail \n" + cList2);
+            Console.WriteLine();
+
+            Console.WriteLine("Testing foreach");
+            Console.WriteLine("All first names. Expecting: Brandon Mary Aaron Cathi");
+            string allFirstNames = "";
+
+            //foreach loop to get all first names in both lists, then combine
+            foreach (Customer cust in cList2)
+            {
+                allFirstNames = allFirstNames + cust.FirstName + " ";
+            }
+            Console.WriteLine(allFirstNames);
+            Console.WriteLine();
+
+            Console.WriteLine("Testing Remove and - operator");
+            cList2.Remove(wholecust2);
+            cList2 -= retailcust2;
+            Console.WriteLine("Expecting 1 retail and 1 wholesale \n" + cList2);
+        }
+
         static void TestCustomerAll()
         {
             TestCustomerConstructors();

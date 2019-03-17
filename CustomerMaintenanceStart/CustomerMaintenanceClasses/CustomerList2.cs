@@ -7,15 +7,13 @@ namespace CustomerMaintenanceClasses
 {
     public class CustomerList2 : List<Customer>
     {
-        private List<Customer> customers;
-
         // changed Fill method
         public void Fill()
         {
             List<Customer> customers = CustomerDB.GetCustomers();
-            foreach (Customer c in customers)
+            foreach (Customer cust in customers)
             {
-                base.Add(c);
+                base.Add(cust);
             }
         }
         // replaced customers variable with this keyword
@@ -24,31 +22,28 @@ namespace CustomerMaintenanceClasses
             CustomerDB.SaveCustomers(this);
         }
         // used base keyword
-        public new void Add(Customer c)
+        public new void Add(Customer cust)
         {
-            base.Add(c);
-            //Changed(this);
+            base.Add(cust);
         }
         // replaced customers variable with this keyword
         public void Add(string firstName, string lastName, string email)
         {
-            Customer c = new Customer(firstName, lastName, email);
-            this.Add(c);
-            //Changed(this);
+            Customer cust = new Customer(firstName, lastName, email);
+            this.Add(cust);
         }
 
         public new void Remove(Customer customer)
         {
             base.Remove(customer);
-            //Changed(this);
         }
 
         public override string ToString()
         {
             string output = "";
-            foreach (Customer c in this)
+            foreach (Customer cust in this)
             {
-                output += c.ToString() + "\n";
+                output += cust.ToString() + "\n";
             }
             return output;
         }
@@ -70,35 +65,33 @@ namespace CustomerMaintenanceClasses
             set
             {
                 base[i] = value;
-                //Changed(this);
             }
         }
 
-        // Look at stuff below this, watch 3/11 class video, need to fix errors in operators
 
         public Customer this[string email]
         {
             get
             {
-                foreach (Customer c in customers)
+                foreach (Customer cust in this)
                 {
-                    if (c.Email == email)
-                        return c;
+                    if (cust.Email == email)
+                        return cust;
                 }
                 return null;
             }
         }
 
 
-        public static CustomerList2 operator + (CustomerList2 clist, Customer c)
+        public static CustomerList2 operator + (CustomerList2 clist, Customer cust)
         {
-            clist.Add(c);
+            clist.Add(cust);
             return clist;
         }
 
-        public static CustomerList2 operator - (CustomerList2 clist, Customer c)
+        public static CustomerList2 operator - (CustomerList2 clist, Customer cust)
         {
-            clist.Remove(c);
+            clist.Remove(cust);
             return clist;
         }
     }
